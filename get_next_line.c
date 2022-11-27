@@ -6,7 +6,7 @@
 /*   By: tbourdea <tbourdea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:02:10 by tbourdea          #+#    #+#             */
-/*   Updated: 2022/11/27 17:55:17 by tbourdea         ###   ########.fr       */
+/*   Updated: 2022/11/27 18:13:21 by tbourdea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ char	*get_next_line(int fd)
 	char		*buff;
 
 	size = 1;
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	while (size != 0 && (!ft_gotcha(arch)))
 	{
 		buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
