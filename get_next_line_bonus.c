@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbourdea <tbourdea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 18:02:10 by tbourdea          #+#    #+#             */
-/*   Updated: 2022/11/30 18:28:36 by tbourdea         ###   ########.fr       */
+/*   Created: 2022/11/30 18:21:44 by tbourdea          #+#    #+#             */
+/*   Updated: 2022/11/30 18:34:36 by tbourdea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,13 @@ char	*ft_strjoin(char *s1, char *s2)
 char	*get_next_line(int fd)
 {
 	ssize_t		size;
-	static char	*arch;
+	static char	*arch[1024];
 	char		*buff;
 
 	size = 1;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	while (size != 0 && (!ft_gotcha(arch)))
+	while (size != 0 && (!ft_gotcha(arch[fd])))
 	{
 		buff = ft_empty_str(BUFFER_SIZE);
 		if (!buff)
@@ -112,27 +112,9 @@ char	*get_next_line(int fd)
 			return (NULL);
 		}
 		buff[size] = '\0';
-		arch = ft_strjoin(arch, buff);
+		arch[fd] = ft_strjoin(arch[fd], buff);
 	}
-	buff = ft_row(arch);
-	arch = ft_newline(arch, size);
+	buff = ft_row(arch[fd]);
+	arch[fd] = ft_newline(arch[fd], size);
 	return (buff);
 }
-
-// int main(void)
-// {
-// 	char	*buff;
-// 	int		fd;
-// 	int		i;
-
-// 	i = 0;
-// 	fd = open("test.txt", O_RDONLY);
-// 	while (i <= 10)
-// 	{
-// 		buff = get_next_line(fd);
-// 		printf("%s", buff);
-// 		free(buff);
-// 		i++;
-// 	}
-// 	return (0);
-// }
