@@ -6,11 +6,11 @@
 /*   By: tbourdea <tbourdea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:21:44 by tbourdea          #+#    #+#             */
-/*   Updated: 2022/11/30 18:34:36 by tbourdea         ###   ########.fr       */
+/*   Updated: 2022/12/01 16:03:12 by tbourdea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_newline(char *arch, int size)
 {
